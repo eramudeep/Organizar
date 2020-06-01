@@ -18,22 +18,19 @@ export default class Dashboard extends Component {
       availableLists: [],
     };
   }
-  async componentDidMount() {
+  loadLists = async ()=>{
     //@ts-ignore
     const {availableLists} = this.state;
     this.setState({
       availableLists: await getLists(),
     });
   }
+  async componentDidMount() {
+    await this.loadLists()
+  }
   render() {
     //@ts-ignore
-    const {
-      isModalOpen,
-      showAddToList,
-      selectedIcon,
-      listTitle,
-      availableLists,
-    } = this.state;
+    const { isModalOpen, showAddToList,  selectedIcon, listTitle,  availableLists,  } = this.state;
     return (
       <>
         <Header />
@@ -78,13 +75,15 @@ export default class Dashboard extends Component {
                 listTitle: listTitle,
               });
             }}
-            onDone={async () => {
-              console.log({listTitle, selectedIcon});
+            onDone={async () => { 
               this.setState({
                 showAddToList: !showAddToList,
               });
               //@ts-ignore
               await addList({title: listTitle, icon: selectedIcon});
+              setTimeout(async ()=>{
+                await this.loadLists()
+              },500)
             }}
           />
 
