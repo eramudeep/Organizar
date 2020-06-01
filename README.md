@@ -1,4 +1,15 @@
 # Organizar
+<h3>Screen shots</h3>
+<img src="screens/AddTask.png">
+<img src="screens/Calendar.png">
+<img src="screens/Filter_Option.png">
+<img src="screens/Settings.png">
+<img src="screens/Tasks_List.png">
+<img src="screens/Tasks_View.png">
+
+
+
+
 
 <p>Get more done with the Amusoftech`s Organizar mobile app. Manage, capture, and edit your tasks from anywhere, at anytime, with to-dos that sync across all your devices.<p>
   
