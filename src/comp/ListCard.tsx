@@ -11,10 +11,14 @@ import {scale} from 'react-native-size-matters';
 import ICAll from '../icons/ICAll';
 
 const SCREEN_SIZE = Dimensions.get('window');
-export default class ListCard extends Component {
+interface Props{
+  onPress?:(listId?:any)=>void
+}
+export default class ListCard extends Component<Props> {
   render() {
+    const {onPress}= this.props
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity  onPress={onPress} style={styles.container}>
         <ICAll height={scale(55)} width={scale(55)} />
         <Text style={[styles.titleText]}> All Tasks </Text>
         <Text style={[styles.titleText,{ marginTop:scale(0),fontSize:scale(12),color:'rgba(255,255,255,0.5)'}]}>9 Items </Text>

@@ -26,14 +26,16 @@ import Container from './src/comp/Container';
 import Header from './src/comp/Header'
 import Dashboard from './src/screens/Dashboard';
 import TaskList from './src/screens/TaskList';
+import Stack from './src/stack/Stack';
 
 const App: () => React$Node = () => {
   return ( 
-       <Container>
-         <Header/> 
+    
+      <Stack> 
          {/* <Dashboard/> */}
-         <TaskList/>
-       </Container>  
+         {/* <TaskList/> */}  
+       </Stack> 
+      
   );
 };
 
