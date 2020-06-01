@@ -18,5 +18,5 @@
 • Organize your tasks by date or prioritize using drag-and-drop<br>
 • Receive due date notification reminders to keep your tasks on track<br>
 
-
-<a href="/www.amusoftech.com/" > Visit us for more cool stuff</a>
+<a href="http://amusoftech.com" target="_blank" rel="noopener noreferrer">Visit us for more cool stuff.</a>
+ 
