@@ -35,13 +35,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.primaryLight,
     flexDirection: 'row',
-    flex: 1,
+    //flex: 1,
     paddingVertical: scale(10),
     padding: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: scale(50),
-    //  alignContent:'center'
+    height: scale(50), 
   },
   iconConainer: { 
     textAlign: 'right',

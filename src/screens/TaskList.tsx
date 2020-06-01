@@ -9,13 +9,20 @@ import Header from '../comp/Header';
 export default class TaskList extends Component {
   render() {
     return ( 
+      <>
+       <Header/>
       <Container>
-        <Header/>
+       
       <DayCard/>
         {[1,2,3,4].map((index,key)=>{
             return  <TaskCard key={key}/>
         })} 
+        <DayCard/>
+        {[1,2,3,4].map((index,key)=>{
+            return  <TaskCard key={key}/>
+        })} 
         </Container>
+      </>
        
     );
   }
