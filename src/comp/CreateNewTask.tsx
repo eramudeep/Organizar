@@ -8,14 +8,21 @@ import Container from './Container';
 import InputField from './InputField';
 import FileUpload from './FileUpload';
 import Submit from './Submit';
-
-export default class CreateNewTask extends Component {
+interface Props{
+  isVisible?:boolean
+  onClose?:()=> void
+}
+export default class CreateNewTask extends Component<Props> {
   render() {
+    const { isVisible,onClose} = this.props
     return (
       <Modal
+        animationIn={"slideInUp"}
+        //animationInTiming={1000}
+        onSwipeComplete={onClose}
         swipeDirection="down"
         style={{margin: 0, borderRadius: scale(10)}}
-        isVisible={true}>
+        isVisible={isVisible}>
         <Container>
           <View style={[{height: scale(20)}]}>
             <ICCloseModal fill={colors.textSecondry} />

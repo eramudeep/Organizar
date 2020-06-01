@@ -3,13 +3,16 @@ import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {scale} from 'react-native-size-matters';
 import ICPlus from '../icons/ICPlus';
 import {colors} from '../utils/colors';
-
-export default class DayCard extends Component {
+interface Props{
+onPress?:()=>void
+}
+export default class DayCard extends Component<Props> {
   render() {
+   const {onPress} = this.props
     return (
       <View style={styles.dayContainer}>
         <Text style={styles.textStyle}> Today </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPress} >
           <ICPlus
             height={scale(25)}
             width={scale(25)}

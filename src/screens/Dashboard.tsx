@@ -10,7 +10,7 @@ export default class Dashboard extends Component {
     return (
       <Container>
         <Header />
-        <CreateNewTask/>
+      
         <View style={[styles.container, {padding: 20}]}>
           {[1, 23].map(index => {
             return (
