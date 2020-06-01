@@ -5,13 +5,15 @@ import { colors } from '../utils/colors'
 interface Props{
     numberOfLines?:number 
     placeholder?:string
+    onChangeText?:(changedText:string) =>void
 }
 export default class InputField extends Component<Props> {
     render() {
-        const {numberOfLines,placeholder} = this.props
+        const {numberOfLines,placeholder,onChangeText} = this.props
         return (
             <View style={{marginBottom:scale(10)}} >
                 <TextInput
+                onChangeText={onChangeText}
                 placeholder={placeholder ? placeholder : "Task name"}
                 numberOfLines={numberOfLines}
                 placeholderTextColor={colors.textSecondry}

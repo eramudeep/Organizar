@@ -13,12 +13,14 @@ interface Props {
   onClose?: () => void;
   toggleIconList?:()=>void
   selectedIcon?:string | false
+  onChangeText?:(changedText:string) =>void
+  onDone?: () => void;
 }
 export default class AddList extends Component<Props> {
   
     
   render() { 
-    const {isVisible, onClose,toggleIconList,selectedIcon} = this.props;
+    const {isVisible, onClose,toggleIconList,selectedIcon,onChangeText,onDone} = this.props;
     return (
       <Modal
         animationIn={'slideInUp'}
@@ -26,7 +28,7 @@ export default class AddList extends Component<Props> {
         swipeDirection="down"
         style={{
           margin: 0,
-          marginTop: scale(SCREEN.height / 3),
+          marginTop: scale((SCREEN.height / 2)-50),
           borderRadius: scale(10),
           zIndex: 1,
         }}
@@ -46,11 +48,11 @@ export default class AddList extends Component<Props> {
               }}>
               Add List
             </Text>
-            <InputField placeholder={'List Name'} />
+            <InputField onChangeText={onChangeText} placeholder={'List Name'} /> 
             <View style={{flex: 1, alignItems: 'center'}}>
               <IConPlaceHolder onPress={toggleIconList} selectedIcon={selectedIcon} />
             </View>
-            <Submit containerStyle={{margin: scale(0)}} />
+            <Submit onDone={onDone} containerStyle={{margin: scale(0)}} />
           </ScrollView>
         </Container>
       </Modal>

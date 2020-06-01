@@ -5,32 +5,47 @@ import Container from '../comp/Container';
 import Header from '../comp/Header';
 import IconsList from '../IconsList/IconsList';
 import AddList from './task-list/AddList';
-
+import {addList, getLists} from '../utils/asynstore/list';
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isModalOpen: false,
-      showAddToList:false,
-      selectedIcon:false
+      showAddToList: false,
+      selectedIcon: false,
+      listTitle: '',
+      availableLists: [],
     };
   }
-
+  async componentDidMount() {
+    //@ts-ignore
+    const {availableLists} = this.state;
+    this.setState({
+      availableLists: await getLists(),
+    });
+  }
   render() {
     //@ts-ignore
-    const {isModalOpen,showAddToList,selectedIcon} = this.state;
+    const {
+      isModalOpen,
+      showAddToList,
+      selectedIcon,
+      listTitle,
+      availableLists,
+    } = this.state;
     return (
       <>
         <Header />
         <Container>
           <View style={[styles.container, {flexWrap: 'wrap', padding: 20}]}>
-            {[1, 23, 6, 7, 8, 9].map(index => {
+            {availableLists.map((item: any, index: any) => {
               return (
                 <ListCard
                   onPress={() => {
                     this.props.navigation.navigate('TaskList');
                   }}
+                  listDetails={item}
                   key={index}
                 />
               );
@@ -50,23 +65,38 @@ export default class Dashboard extends Component {
                 showAddToList: !showAddToList,
               });
             }}
-            toggleIconList={()=>{
-              console.log("from dashboard");
+            toggleIconList={() => {
+              console.log('from dashboard');
               this.setState({
                 isModalOpen: !isModalOpen,
               });
-              
             }}
             selectedIcon={selectedIcon}
             isVisible={showAddToList}
+            onChangeText={listTitle => {
+              this.setState({
+                listTitle: listTitle,
+              });
+            }}
+            onDone={async () => {
+              console.log({listTitle, selectedIcon});
+              this.setState({
+                showAddToList: !showAddToList,
+              });
+              //@ts-ignore
+              await addList({title: listTitle, icon: selectedIcon});
+            }}
           />
 
-         <IconsList isVisible={isModalOpen} onClose={(selectedIcon?:string)=>{ 
-            this.setState({
-              isModalOpen: !isModalOpen,
-              selectedIcon:selectedIcon
-            });
-         }} /> 
+          <IconsList
+            isVisible={isModalOpen}
+            onClose={(selectedIcon?: string) => {
+              this.setState({
+                isModalOpen: !isModalOpen,
+                selectedIcon: selectedIcon,
+              });
+            }}
+          />
         </Container>
       </>
     );
