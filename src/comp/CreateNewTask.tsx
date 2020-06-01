@@ -18,8 +18,7 @@ export default class CreateNewTask extends Component<Props> {
     const { isVisible,onClose} = this.props
     return (
       <Modal
-        animationIn={"slideInUp"}
-        //animationInTiming={1000}
+        animationIn={"slideInUp"} 
         onSwipeComplete={onClose}
         swipeDirection="down"
         style={{margin: 0, marginTop:scale(SCREEN.height/3), borderRadius: scale(10), }}

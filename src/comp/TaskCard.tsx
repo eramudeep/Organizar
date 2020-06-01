@@ -5,6 +5,10 @@ import {colors} from '../utils/colors';
 import Badge from './Badge';
 import RadioButton from './RadioButton'
 export default class TaskCard extends Component {
+
+    randomInteger=(min:number, max:number) =>{
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
   render() {
     return (
       
@@ -14,7 +18,7 @@ export default class TaskCard extends Component {
              <RadioButton/>
               <Text style={styles.textStyle}> Google Project</Text>
             </View>
-            <Badge />
+            <Badge   colorCode={ this.randomInteger(0,2) }  />
           </View>
           <View style={[styles.row,{paddingVertical: scale(7)}]}>
                 <Text style={{color:colors.textSecondry}} >Website Update</Text>

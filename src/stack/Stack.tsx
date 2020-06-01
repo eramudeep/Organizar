@@ -16,15 +16,19 @@ import ICTask from '../icons/ICTask';
 
 //const StackNav = createStackNavigator();
 const StackNav = createBottomTabNavigator();
-
+const tabStyle={
+  activeTintColor:colors.secondryDefault,
+  style:{backgroundColor:colors.primaryDark  },
+  labelStyle:{color: colors.white}, 
+}
 export default class Stack extends Component {
   render() {
     return (
       <NavigationContainer >
-        <StackNav.Navigator  tabBarOptions={{activeTintColor:colors.secondryDefault,style:{backgroundColor:colors.primaryDark},labelStyle:{color: colors.white}}}  >
+        <StackNav.Navigator initialRouteName={"Tasks"} tabBarOptions={tabStyle}  >
           <StackNav.Screen  options={{ tabBarIcon: ({ color, size })=><ICTask width={scale(22)} height={scale(25)} fill={color}  /> }} name="Tasks" component={Dashboard} />
           <StackNav.Screen  options={{ tabBarLabel:"Calander",tabBarIcon: ({ color, size })=><ICCalander width={scale(20)} height={scale(20)} fill={color}  /> }} name="TaskList" component={TaskList} />
-          <StackNav.Screen  options={{ tabBarIcon: ({ color, size })=><ICSettings width={scale(20)} height={scale(20)} fill={color}  /> }}  name="Settings" component={TaskList} />
+         {/*  <StackNav.Screen  options={{ tabBarIcon: ({ color, size })=><ICSettings width={scale(20)} height={scale(20)} fill={color}  /> }}  name="Settings" component={TaskList} /> */}
         </StackNav.Navigator>
       </NavigationContainer>
     );
