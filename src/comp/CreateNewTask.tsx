@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity,Dimensions} from 'react-native';
 import Modal from 'react-native-modal';
 import {colors} from '../utils/colors';
 import ICCloseModal from '../icons/ICCloseModal';
@@ -8,6 +8,7 @@ import Container from './Container';
 import InputField from './InputField';
 import FileUpload from './FileUpload';
 import Submit from './Submit';
+const SCREEN = Dimensions.get("window")
 interface Props{
   isVisible?:boolean
   onClose?:()=> void
@@ -21,9 +22,9 @@ export default class CreateNewTask extends Component<Props> {
         //animationInTiming={1000}
         onSwipeComplete={onClose}
         swipeDirection="down"
-        style={{margin: 0, borderRadius: scale(10)}}
+        style={{margin: 0, marginTop:scale(SCREEN.height/3), borderRadius: scale(10), }}
         isVisible={isVisible}>
-        <Container>
+        <Container continerStyle={{borderTopLeftRadius:scale(15), borderTopRightRadius:scale(15)}}>
           <View style={[{height: scale(20)}]}>
             <ICCloseModal fill={colors.textSecondry} />
           </View>
