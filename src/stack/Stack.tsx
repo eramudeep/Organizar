@@ -12,8 +12,7 @@ import ICPlus from '../icons/ICPlus';
 import ICCalander from '../icons/ICCalander';
 import { scale } from 'react-native-size-matters';
 import ICSettings from '../icons/ICSettings'
-import ICTask from '../icons/ICTask';
-
+import ICTask from '../icons/ICTask';  
 //const StackNav = createStackNavigator();
 const StackNav = createBottomTabNavigator();
 const tabStyle={
@@ -22,6 +21,7 @@ const tabStyle={
   labelStyle:{color: colors.white}, 
 }
 export default class Stack extends Component {
+   
   render() {
     return (
       <NavigationContainer >

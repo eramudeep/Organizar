@@ -6,8 +6,10 @@ import Header from '../comp/Header';
 import IconsList from '../IconsList/IconsList';
 import AddList from './task-list/AddList';
 import {addList, getLists} from '../utils/asynstore/list';
+/* import PushNotification from 'react-native-push-notification'; */
+
 export default class Dashboard extends Component {
-  constructor(props) {
+  constructor(props:any) {
     super(props);
 
     this.state = {
@@ -18,19 +20,25 @@ export default class Dashboard extends Component {
       availableLists: [],
     };
   }
-  loadLists = async ()=>{
+  loadLists = async () => {
     //@ts-ignore
     const {availableLists} = this.state;
     this.setState({
       availableLists: await getLists(),
     });
-  }
+  };
   async componentDidMount() {
-    await this.loadLists()
+    await this.loadLists();
   }
   render() {
     //@ts-ignore
-    const { isModalOpen, showAddToList,  selectedIcon, listTitle,  availableLists,  } = this.state;
+    const {
+      isModalOpen,
+      showAddToList,
+      selectedIcon,
+      listTitle,
+      availableLists,
+    } = this.state;
     return (
       <>
         <Header />
@@ -49,10 +57,14 @@ export default class Dashboard extends Component {
             })}
             <ListCard
               isAddNew
-              onPress={() => {
-                this.setState({
+              onPress={() => { 
+                /*  PushNotification.localNotification({ 
+                  title: "My Notification Title", // (optional)
+                  message: "My Notification Message"  
+               })   */ 
+             this.setState({
                   showAddToList: !showAddToList,
-                });
+                });  
               }}
             />
           </View>
@@ -75,15 +87,15 @@ export default class Dashboard extends Component {
                 listTitle: listTitle,
               });
             }}
-            onDone={async () => { 
+            onDone={async () => {
               this.setState({
                 showAddToList: !showAddToList,
               });
               //@ts-ignore
               await addList({title: listTitle, icon: selectedIcon});
-              setTimeout(async ()=>{
-                await this.loadLists()
-              },500)
+              setTimeout(async () => {
+                await this.loadLists();
+              }, 500);
             }}
           />
 
