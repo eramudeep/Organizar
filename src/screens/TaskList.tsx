@@ -29,13 +29,14 @@ export default class TaskList extends Component {
     });
   };
   render() {
-    //console.log(this.props.route.params.taskListId);
+    // console.log(this.props.route.params.taskListId);
 
     //@ts-ignore
     const {isVisible} = this.state;
+     const {title}=this.props.route.params.taskListId
     return (
       <>
-        <Header />
+        <Header label={title} />
         <Container>
           <CreateNewTask
             getTitle={(title: string) => {

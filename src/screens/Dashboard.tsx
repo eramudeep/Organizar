@@ -24,7 +24,7 @@ export default class Dashboard extends Component {
     //@ts-ignore
     const {availableLists} = this.state;
     this.setState({
-      availableLists: await getLists(),
+      availableLists: await getLists() || [],
     });
   };
   async componentDidMount() {

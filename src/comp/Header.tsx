@@ -3,12 +3,16 @@ import {Text, View, StyleSheet,TouchableOpacity} from 'react-native';
 import {colors} from '../utils/colors';
 import {scale} from 'react-native-size-matters';
 import ICMenu from '../icons/ICMenu';
-export default class Header extends Component {
+interface Props{
+  label?:string
+}
+export default class Header extends Component<Props> {
   render() {
+    const {label} = this.props
     return (
       <View style={styles.container}>
         <View>
-          <Text style={styles.textStyle}> My Lists </Text>
+    <Text style={styles.textStyle}> {label ? label : "My Lists" } </Text>
         </View>
         <View style={styles.iconConainer}>
           <TouchableOpacity style={styles.iconConainerSub}>
