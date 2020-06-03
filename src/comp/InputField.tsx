@@ -6,13 +6,16 @@ interface Props{
     numberOfLines?:number 
     placeholder?:string
     onChangeText?:(changedText:string) =>void
+    multiline?: boolean
+    
 }
 export default class InputField extends Component<Props> {
     render() {
-        const {numberOfLines,placeholder,onChangeText} = this.props
+        const {numberOfLines,placeholder,onChangeText,multiline} = this.props
         return (
             <View style={{marginBottom:scale(10)}} >
                 <TextInput
+                multiline={multiline}
                 onChangeText={onChangeText}
                 placeholder={placeholder ? placeholder : "Task name"}
                 numberOfLines={numberOfLines}

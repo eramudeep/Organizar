@@ -48,7 +48,7 @@ export default class Dashboard extends Component {
               return (
                 <ListCard
                   onPress={() => {
-                    this.props.navigation.navigate('TaskList');
+                    this.props.navigation.navigate('TaskList',{taskListId:item});
                   }}
                   listDetails={item}
                   key={index}
